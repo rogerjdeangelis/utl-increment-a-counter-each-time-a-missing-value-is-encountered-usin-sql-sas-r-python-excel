@@ -1,8 +1,8 @@
-%let pgm=utl-increment-a-counter-each-time-a-missing-value-is-encountered-usin-sql-sas-r-python-excel;
+%let pgm=utl-increment-a-counter-each-time-a-missing-value-is-encountered-using-sql-sas-r-python-excel;
 
-%sto_submission;
+%stop_submission;
 
-Increment a counter each time a missing value is encountered usin sql sas r python excel
+Increment a counter each time a missing value is encountered using sql sas r python excel
 
 CONTENTS
    1 sas sql
