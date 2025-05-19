@@ -9,6 +9,29 @@ CONTENTS
    2 r sql      exactle the same code as sas (see after problem)
    3 python sql
    4 excel sql
+   5 sas datastep
+     Keintz, Mark
+     mkeintz@outlook.com
+
+     SOAPBOX ON
+
+     Mark usese a very interesting sas statement.
+     The rhs of the sas statement below is an expression.
+
+     The code increments a counter each time the censor is missing
+
+     cnt+first.censor and censor^=.;
+
+     This is like
+
+     name="ROGER_XX";
+     substr(name,7,2)="02";
+
+     output
+
+     ROGER_02
+
+     SOAPBOX OFF
 
 github
 https://tinyurl.com/mt7k3k4e
@@ -74,6 +97,22 @@ SOAPBOX ON
 /*                        |   order                                                            |                          */
 /*                        |       by otr.rownum                                                |                          */
 /*                        |  ;quit;                                                            |                          */
+/*                        |                                                                    |                          */
+/*------------------------------------------------------------------------------------------------------------------------*/
+/*                        |   5 SAS DATASTEP                                                   |     Censor    NA         */
+/*                        |   =========                                                        |        1       1         */
+/*                        |                                                                    |        .       .         */
+/*                        |   data want (drop=_:);                                             |        1       2         */
+/*                        |     set sd1.have;                                                  |        1       2         */
+/*                        |     by censor notsorted;                                           |        .       .         */
+/*                        |     _na+first.censor and censor^=.;                                |        1       3         */
+/*                        |     if censor^=. then na=_na;                                      |        1       3         */
+/*                        |   run;                                                             |        1       3         */
+/*                        |                                                                    |        1       3         */
+/*                        |                                                                    |        .       .         */
+/*                        |                                                                    |        1       4         */
+/*                        |                                                                    |        .       .         */
+/*                        |                                                                    |        .       .         */
 /**************************************************************************************************************************/
 
 /*                   _
@@ -399,6 +438,66 @@ run;quit;
 /*  -- |----------+---------+------------|                                                                                */
 /* [WANT]                                                                                                                 */
 /**************************************************************************************************************************/
+
+/*___                        _       _            _
+| ___|   ___  __ _ ___    __| | __ _| |_ __ _ ___| |_ ___ _ __
+|___ \  / __|/ _` / __|  / _` |/ _` | __/ _` / __| __/ _ \ `_ \
+ ___) | \__ \ (_| \__ \ | (_| | (_| | || (_| \__ \ ||  __/ |_) |
+|____/  |___/\__,_|___/  \__,_|\__,_|\__\__,_|___/\__\___| .__/
+                                                         |_|
+*/
+
+data want (drop=_:);
+  set sd1.have;
+  by censor notsorted;
+  _na+first.censor and censor^=.;
+  if censor^=. then na=_na;
+run;
+
+/**************************************************************************************************************************/
+/*   CENSOR    NA                                                                                                         */
+/*                                                                                                                        */
+/*      1       1                                                                                                         */
+/*      .       .                                                                                                         */
+/*      1       2                                                                                                         */
+/*      1       2                                                                                                         */
+/*      .       .                                                                                                         */
+/*      1       3                                                                                                         */
+/*      1       3                                                                                                         */
+/*      1       3                                                                                                         */
+/*      1       3                                                                                                         */
+/*      .       .                                                                                                         */
+/*      1       4                                                                                                         */
+/*      .       .                                                                                                         */
+/*      .       .                                                                                                         */
+/**************************************************************************************************************************/
+
+/*__              _       _           _
+ / /_    _ __ ___| | __ _| |_ ___  __| |  _ __ ___ _ __   ___  ___
+| `_ \  | `__/ _ \ |/ _` | __/ _ \/ _` | | `__/ _ \ `_ \ / _ \/ __|
+| (_) | | | |  __/ | (_| | ||  __/ (_| | | | |  __/ |_) | (_) \__ \
+ \___/  |_|  \___|_|\__,_|\__\___|\__,_| |_|  \___| .__/ \___/|___/
+                                                  |_|
+*/
+
+REPO
+-------------------------------------------------------------------------------------------------------------------------------------------
+https://github.com/rogerjdeangelis/utl-adding-sequence-numbers-and-partitions-in-SAS-sql-without-using-monotonic
+https://github.com/rogerjdeangelis/utl-create-equally-spaced-values-using-partitioning-in-sql-wps-r-python
+https://github.com/rogerjdeangelis/utl-create-primary-key-for-duplicated-records-using-sql-partitionaling-and-pivot-wide-sas-python-r
+https://github.com/rogerjdeangelis/utl-find-first-n-observations-per-category-using-proc-sql-partitioning
+https://github.com/rogerjdeangelis/utl-flag-second-duplicate-using-base-sas-and-sql-sas-python-and-r-partitioning-multi-language
+https://github.com/rogerjdeangelis/utl-incrementing-by-one-for-each-new-group-of-records-sas-r-python-sql-partitioning
+https://github.com/rogerjdeangelis/utl-macro-to-enable-sql-partitioning-by-groups-montonic-first-and-last-dot
+https://github.com/rogerjdeangelis/utl-maintaining-the-orginal-order-while-partitioning-groups-using-sql-partitioning
+https://github.com/rogerjdeangelis/utl-pivot-long-pivot-wide-transpose-partitioning-sql-arrays-wps-r-python
+https://github.com/rogerjdeangelis/utl-pivot-transpose-by-id-using-wps-r-python-sql-using-partitioning
+https://github.com/rogerjdeangelis/utl-top-four-seasonal-precipitation-totals--european-cities-sql-partitions-in-wps-r-python
+https://github.com/rogerjdeangelis/utl-transpose-pivot-wide-using-sql-partitioning-in-wps-r-python
+https://github.com/rogerjdeangelis/utl-transposing-rows-to-columns-using-proc-sql-partitioning
+https://github.com/rogerjdeangelis/utl-transposing-words-into-sentences-using-sql-partitioning-in-r-and-python
+https://github.com/rogerjdeangelis/utl-using-sql-in-wps-r-python-select-the-four-youngest-male-and-female-students-partitioning
+
 
 /*              _
   ___ _ __   __| |
