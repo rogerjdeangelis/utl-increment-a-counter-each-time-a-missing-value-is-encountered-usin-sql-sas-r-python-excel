@@ -6,7 +6,7 @@ Increment a counter each time a missing value is encountered using sql sas r pyt
 
 CONTENTS
    1 sas sql
-   2 r sql      exactle the same code as sas (see after problem)
+   2 r sql exactly the same code as sas (see after problem)
    3 python sql
    4 excel sql
    5 sas datastep
@@ -16,7 +16,7 @@ CONTENTS
      SOAPBOX ON
 
      Mark usese a very interesting sas statement.
-     The rhs of the sas statement below is an expression.
+     The lhs of the sas statement below is an expression.
 
      The code increments a counter each time the censor is missing
 
