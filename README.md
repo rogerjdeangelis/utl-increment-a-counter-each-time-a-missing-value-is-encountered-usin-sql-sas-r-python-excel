@@ -6,7 +6,7 @@
 
     CONTENTS
        1 sas sql
-       2 r sql      exactly the same code as sas (see after problem)
+       2 r sql exactly the same code as sas (see after problem)
        3 python sql
        4 excel sql
        5 sas datastep
